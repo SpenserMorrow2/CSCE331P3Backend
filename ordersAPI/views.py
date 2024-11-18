@@ -43,7 +43,7 @@ def create_order(request):
             itemid = item_id,
             size = my_size  
         )
-
+    AddKitchenOrder(nextID)
     return Response(status=status.HTTP_201_CREATED)
 
 
