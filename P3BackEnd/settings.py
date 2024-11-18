@@ -177,8 +177,7 @@ SECURE_HSTS_PRELOAD = True
 
 
 OAUTH2_PROVIDER = {
-    'ACCESS_TOKEN_EXPIRE_SECONDS': 60,
-    #'ACCESS_TOKEN_EXPIRE_SECONDS': 43200,  # token expires after 12 hours
+    'ACCESS_TOKEN_EXPIRE_SECONDS': 43200,  # token expires after 12 hours
     'REFRESH_TOKEN_EXPIRE_SECONDS': 43200,  # refresh token expires after 12 hours
 }
 
