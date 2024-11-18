@@ -171,14 +171,14 @@ REST_FRAMEWORK = {
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 43200  
-SESSION_COOKIE_SECURE = False 
-CSRF_COOKIE_SECURE = False
-#change when using https (above two lines)
-'''
-SESSION_COOKIE_SECURE = True  
+SESSION_COOKIE_SECURE = True 
 CSRF_COOKIE_SECURE = True
-# For https, safer cookie transfers. Prevents things like man-in-the-middle attacks
-'''
+SECURE_SSL_REDIRECT = True
+
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
 
 OAUTH2_PROVIDER = {
     'ACCESS_TOKEN_EXPIRE_SECONDS': 43200,  # token expires after 12 hours
