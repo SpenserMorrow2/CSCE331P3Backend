@@ -44,13 +44,17 @@ def create_order(request):
             size = my_size  
         )
 
-    #AddKitchenOrder(nextID)
+    AddKitchenOrder(nextID)
     return Response(status=status.HTTP_201_CREATED)
 
 
 
 def AddKitchenOrder(oID):
-    newEntryID = 1 + (ActiveKitchenOrders.objects.aggregate(Max('entryid'))['entryid__max'] or -1)
+    maxEntryID = ActiveKitchenOrders.objects.aggregate(Max('entryid'))['entryid__max']
+    if maxEntryID is None:
+        newEntryID = 0
+    else:
+        newEntryID = maxEntryID + 1
     oID = oID
     
     
