@@ -50,7 +50,7 @@ def create_order(request):
 
 
 def AddKitchenOrder(oID):
-    newEntryID = 1 + (ActiveKitchenOrders.objects.aggregate(Max('entryid'))['entryid__max'])
+    newEntryID = 1 + (ActiveKitchenOrders.objects.aggregate(Max('entryid'))['entryid__max'] or -1)
     oID = oID
     
     
