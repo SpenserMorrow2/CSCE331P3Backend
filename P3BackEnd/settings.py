@@ -69,11 +69,13 @@ ROOT_URLCONF = 'P3BackEnd.urls'
  
 CORS_ALLOWED_ORIGINS = [
     'https://project-3-deployment-black.vercel.app',
+    'http://localhost:8080', #remove soon
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://csce331p3backend.onrender.com',
     'https://project-3-deployment-black.vercel.app',
+    'http://localhost:8080', #remove soon
 ]
 
 TEMPLATES = [
