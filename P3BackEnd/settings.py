@@ -27,9 +27,9 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 # changed to false for deploy
 DEBUG = False
 
-'''Need Updating once deployed'''
-ALLOWED_HOSTS = ['*']
-#update when api deployment domain is known 
+
+ALLOWED_HOSTS = ['csce331p3backend.onrender.com', 'project-3-deployment-black.vercel.app']
+
 
 
 # Application definition
@@ -66,21 +66,15 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'P3BackEnd.urls'
-CORS_ALLOW_ALL_ORIGINS = True
-'''
-After front end deployment, change above line to 
+ 
 CORS_ALLOWED_ORIGINS = [
-    'https://your-frontend-domain.com',
+    'https://project-3-deployment-black.vercel.app',
 ]
-'''
-#change here too 
-'''
+
 CSRF_TRUSTED_ORIGINS = [
-    'https://your-frontend-domain.com',
-    'https://your-api-domain.com',
+    'https://csce331p3backend.onrender.com',
+    'https://project-3-deployment-black.vercel.app',
 ]
-#set when ready and domains known 
-'''
 
 TEMPLATES = [
     {
