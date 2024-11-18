@@ -44,7 +44,7 @@ def create_order(request):
             size = my_size  
         )
 
-    AddKitchenOrder(nextID)
+    #AddKitchenOrder(nextID)
     return Response(status=status.HTTP_201_CREATED)
 
 
