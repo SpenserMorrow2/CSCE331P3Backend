@@ -115,7 +115,7 @@ def create_junction_entries(associated_inventory, itemid):
         )
         next_junction_id += 1  # increment for each new junction entry
 
-@api_view(['Post'])
+@api_view(['POST'])
 def addMenuItem(request, format=None): 
     newName = request.data.get('name')
     newType = request.data.get('type')
