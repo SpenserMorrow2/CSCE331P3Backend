@@ -8,6 +8,6 @@ urlpatterns = [
     path('nextInventoryID/', views.getNextRawID, name = 'getNextRawID'),
     path('nextJunctionID/', views.getNextJunctionID, name = 'getNextJunctionID'),
     path('rawItemsForMenuItem/<int:itemid>', views.getRawInventoryForMenuItem, name = 'getRawInventoryForMenuItem'),
-    path('addItem/', views.addInventoryItem, name = 'addInventoryItem'),
+    path('addItem', views.addInventoryItem, name = 'addInventoryItem'),
     path('removeInventory/<int:removalid>', views.removeInventoryItem, name = 'removeInventoryItem'),
 ]
