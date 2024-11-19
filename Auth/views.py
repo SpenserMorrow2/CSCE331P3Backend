@@ -9,6 +9,7 @@ from datetime import timedelta
 from django.utils import timezone
 from employeeAPI.models import Employee
 from django.contrib.auth import logout
+from rest_framework.permissions import IsAuthenticated
 
 @api_view(['POST'])
 @permission_classes([AllowAny]) #allows unauthenticated users to generate their token
@@ -52,6 +53,31 @@ def get_token_for_manager(request):
         "token_type": "Bearer",
         "scope": access_token.scope
     }, status=200)
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])  
+def validate_token(request):
+    token = request.data.get('token')
+
+    # validate token is in input
+    if not token:
+        return Response({"error": "Token is required."}, status=400)
+
+    try:
+        # look for token in database
+        access_token = AccessToken.objects.get(token=token)
+
+        # check if expired
+        if access_token.expires < timezone.now():
+            return Response({"valid": False, "error": "Token has expired."}, status=401)
+
+        # token valid and active
+        return Response({"valid": True, "user": access_token.user.username}, status=200)
+
+    except AccessToken.DoesNotExist:
+        # token not found in database
+        return Response({"valid": False, "error": "Invalid token."}, status=404)
 
 @api_view(['POST'])
 def logout_user(request):
