@@ -80,30 +80,23 @@ def AddKitchenOrder(oID):
     return Response(status=status.HTTP_201_CREATED)
 
 @api_view(['DELETE'])
-def RemoveKitchenOrder(request, format=None):
-        # validate id
-    entryNum = request.data.get('entryid')
-    oID = request.data.get('orderid')
-
-    errors={}
+def RemoveKitchenOrder(request, orderID, format=None):
+    # validate id
+    oID = orderID
     
     #input validation w/ helper function
-    if not entryNum or not isinstance(entryNum, int): #check int
-        return Response({"error": "entryid is required and must be an integer."}, status=status.HTTP_400_BAD_REQUEST)
+    if not oID or not isinstance(oID, int): #check int
+        return Response({"error": "order ID is required and must be an integer."}, status=status.HTTP_400_BAD_REQUEST)
     
     try:
-        kitchenOrder = ActiveKitchenOrders.objects.get(entryid=entryNum)
+        kitchenOrder = ActiveKitchenOrders.objects.get(orderid=oID)
     except ActiveKitchenOrders.DoesNotExist:
-        return Response({"error": "Given entry id doesn't exist"}, status=status.HTTP_404_NOT_FOUND)
-
+        return Response({"error": "Given order ID doesn't exist"}, status=status.HTTP_404_NOT_FOUND)
     
-        # delete all junction entries associated with the itemid
-    ActiveKitchenOrders.objects.filter(orderid=oID).delete()
-
-        # delete MenuItem entry
+    # delete kitchen order entry
     kitchenOrder.delete()
 
-    return Response({"message": f"ActiveKitchenOrder with entry id {entryNum} has been deleted."}, status=status.HTTP_200_OK)
+    return Response({"message": f"Active Kitchen Order with order id {oID} has been deleted."}, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
 def get_kitchen_orders(request, format=None):
