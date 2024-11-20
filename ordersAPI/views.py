@@ -45,7 +45,7 @@ def create_order(request):
         )
 
     AddKitchenOrder(nextID)
-    return Response(status=status.HTTP_201_CREATED)
+    return Response({'orderid': nextID}, status=status.HTTP_201_CREATED)
 
 
 
