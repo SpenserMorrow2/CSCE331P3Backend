@@ -91,10 +91,9 @@ def get_kitchen_orders(request, format=None):
     TimesInOrder=[]
     for id in orderIDs:
         my_list=[]
-        unfiltered_sizes_list=[]
         itemids=OrderItems.objects.filter(orderid=id).values_list('itemid', flat=True)
         TimesInOrder.append(OrderInfo.objects.get(orderid=id).time)
-        unfiltered_sizes_list.append(OrderItems.objects.filter(orderid=id).values_list('size', flat=True))
+        unfiltered_sizes_list=OrderItems.objects.filter(orderid=id).values_list('size', flat=True)
         for x in itemids:
             my_list.append(MenuItem.objects.get(itemid=x).name)
             #unfiltered_sizes_list.append(OrderItems.objects.filter().size)
