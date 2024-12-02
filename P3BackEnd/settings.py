@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 # changed to false for deploy
-DEBUG = True
+DEBUG = False
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['csce331p3backend.onrender.com', 'project-3-deployment-black.vercel.app']
 '''
 In deployed version on my github, above line changed to 
 ALLOWED_HOSTS = ['csce331p3backend.onrender.com', 'project-3-deployment-black.vercel.app']
@@ -71,7 +71,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'P3BackEnd.urls'
-CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    'https://project-3-deployment-black.vercel.app',
+    'http://localhost:8080', #remove soon
+]
 '''
 In deployed version on my github, above line changed to 
 CORS_ALLOWED_ORIGINS = [
@@ -80,6 +84,11 @@ CORS_ALLOWED_ORIGINS = [
 '''
 
 #change here too 
+CSRF_TRUSTED_ORIGINS = [
+    'https://csce331p3backend.onrender.com',
+    'https://project-3-deployment-black.vercel.app',
+    'http://localhost:8080', #remove soon
+]
 '''
 In deployed version on my github, added following line
 CSRF_TRUSTED_ORIGINS = [
@@ -177,23 +186,17 @@ REST_FRAMEWORK = {
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 43200  
+SESSION_COOKIE_SECURE = True 
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+#above changed for https 
 
-#following changed for https 
-
-#SESSION_COOKIE_SECURE = True 
-#CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = False
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
-#SECURE_SSL_REDIRECT = True #added for https, reqirects http reuqests to https
 
 #next 3 lines added for https
-#SECURE_HSTS_SECONDS = 31536000  # 1 year
-#SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-#SECURE_HSTS_PRELOAD = True
-SECURE_HSTS_SECONDS = 0
-SECURE_HSTS_INCLUDE_SUBDOMAINS = False
-SECURE_HSTS_PRELOAD = False
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
 
 OAUTH2_PROVIDER = {
     'ACCESS_TOKEN_EXPIRE_SECONDS': 43200,  # token expires after 12 hours
