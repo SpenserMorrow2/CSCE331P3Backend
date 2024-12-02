@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 # changed to false for deploy
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['csce331p3backend.onrender.com', 'project-3-deployment-black.vercel.app']
