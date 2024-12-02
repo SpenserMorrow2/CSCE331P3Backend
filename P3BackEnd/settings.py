@@ -72,30 +72,24 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'P3BackEnd.urls'
 
-CORS_ALLOWED_ORIGINS = [
-    'https://project-3-deployment-black.vercel.app',
-    'http://localhost:8080', #remove soon
-]
+CORS_ALLOW_ALL_ORIGINS = True
 '''
 In deployed version on my github, above line changed to 
 CORS_ALLOWED_ORIGINS = [
     'https://project-3-deployment-black.vercel.app',
+    'http://localhost:8080', #remove soon
 ]
 '''
 
 #change here too 
+'''
 CSRF_TRUSTED_ORIGINS = [
     'https://csce331p3backend.onrender.com',
     'https://project-3-deployment-black.vercel.app',
     'http://localhost:8080', #remove soon
 ]
 '''
-In deployed version on my github, added following line
-CSRF_TRUSTED_ORIGINS = [
-    'https://csce331p3backend.onrender.com',
-    'https://project-3-deployment-black.vercel.app',
-]
-'''
+
 
 TEMPLATES = [
     {
