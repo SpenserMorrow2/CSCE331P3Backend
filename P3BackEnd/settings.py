@@ -72,23 +72,23 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'P3BackEnd.urls'
 
-CORS_ALLOW_ALL_ORIGINS = True
-'''
-In deployed version on my github, above line changed to 
+#CORS_ALLOW_ALL_ORIGINS = True
+
+#In deployed version on my github, above line changed to 
 CORS_ALLOWED_ORIGINS = [
     'https://project-3-deployment-black.vercel.app',
     'http://localhost:8080', #remove soon
 ]
-'''
+
 
 #change here too 
-'''
+
 CSRF_TRUSTED_ORIGINS = [
     'https://csce331p3backend.onrender.com',
     'https://project-3-deployment-black.vercel.app',
     'http://localhost:8080', #remove soon
 ]
-'''
+
 
 
 TEMPLATES = [
@@ -181,25 +181,25 @@ REST_FRAMEWORK = {
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 43200  
 #https changes 
-SECURE_SSL_REDIRECT = False
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
-'''
+#SECURE_SSL_REDIRECT = False
+#SESSION_COOKIE_SECURE = False
+#CSRF_COOKIE_SECURE = False
+
 SESSION_COOKIE_SECURE = True 
 CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
-'''
+
 #above changed for https 
 
-SECURE_HSTS_SECONDS = 0
-SECURE_HSTS_INCLUDE_SUBDOMAINS = False
-SECURE_HSTS_PRELOAD = False
+#SECURE_HSTS_SECONDS = 0
+#SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+#SECURE_HSTS_PRELOAD = False
 #next 3 lines added for https
-'''
+
 SECURE_HSTS_SECONDS = 31536000  # 1 year
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
-'''
+
 
 
 OAUTH2_PROVIDER = {
